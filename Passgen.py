@@ -5,12 +5,12 @@ import sys
 
 config = {}
 
-with open('config.json', 'r') as r:
+with open('config.json', 'r') as r: # Load data in config.
 	config = json.load(r)
 
-i = 0
+i = 0 # Index for arguments.
 
-for p in sys.argv:
+for p in sys.argv: # Arguments initilization. Example: python Passgen.py (First Length) (Second Length) (Ascii Symbol Chance)
 	if p == 'Passgen.py':
 		pass
 	else:
@@ -26,7 +26,7 @@ for p in sys.argv:
 		elif i == 3:
 			config['asciiSymbolChance'] = p
 
-if config['lengthFirst'] > config['lengthSecond']:
+if config['lengthFirst'] > config['lengthSecond']: # Error initilization.
 	print('Error (Invalid value) in config.json(lengthFirst).')
 	exit()
 else:
@@ -34,15 +34,17 @@ else:
 
 pwg = ''
 
-for i in range(random.randint(config['lengthFirst'], config['lengthSecond'])):
-	chance = random.random()
-	if chance < config['asciiSymbolChance']:
+for i in range(random.randint(config['lengthFirst'], config['lengthSecond'])): # Genering password.
+	chance = random.random() # Ascii symbol chance.
+	if chance < config['asciiSymbolChance']: # Insert ascii symbol.
 		symbols = string.ascii_lowercase
-		symbol = random.choice(symbols)
-		pwg = pwg + symbol
+		symbol = random.choice(symbols) # Random ascii symbol.
+		pwg = pwg + symbol # Gluing.
 	else:
-		symbol = random.randint(0, 9)
+		symbol = random.randint(0, 9) # Random number.
 		symbol = str(symbol)
-		pwg = pwg + symbol
+		pwg = pwg + symbol # Gluing.
 
-print(pwg)
+print(pwg) # Print genering password.
+
+# End. Bye bye :)
