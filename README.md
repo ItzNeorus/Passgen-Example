@@ -1,2 +1,1 @@
-# Passgen-Example
-Password Generator example.
+Hey, this is example Password Generator in Python. Use this example for self-education.
