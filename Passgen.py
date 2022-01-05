@@ -10,7 +10,7 @@ with open('config.json', 'r', encoding='UTF-8') as r: # Load data in config.
 
 i = 0 # Index for arguments.
 
-for p in sys.argv: # Arguments initilization. Example: python Passgen.py (First Length) (Second Length) (Ascii Symbol Chance)
+for p in sys.argv: # Arguments initilization. Example: python Passgen.py (First Length) (Second Length) (Ascii Symbol Chance) (Unical Symbol Chance)
 	if p == 'Passgen.py':
 		pass
 	else:
@@ -45,9 +45,9 @@ for i in range(random.randint(config['lengthFirst'], config['lengthSecond'])): #
 		symbols = string.ascii_letters
 		symbol = random.choice(symbols) # Random ascii symbol.
 		pwg = pwg + symbol # Gluing.
-		if chance < config['unicalSymbolChance']:
-			symbol = random.choice(config['unicalSymbols'])
-			pwg = pwg + symbol
+		if chance < config['unicalSymbolChance']: # Insert unical symbol.
+			symbol = random.choice(config['unicalSymbols']) # Random unical symbol.
+			pwg = pwg + symbol # Gluing
 	else:
 		symbol = random.randint(0, 9) # Random number.
 		symbol = str(symbol)
